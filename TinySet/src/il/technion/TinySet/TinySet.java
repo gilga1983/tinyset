@@ -1,7 +1,5 @@
 package il.technion.TinySet;
 
-import org.junit.Assert;
-
 import il.technion.BitManipulation.BitHelper;
 import il.technion.BitManipulation.BitwiseArray;
 import il.technion.BitManipulation.BucketSizeExpert;
@@ -9,12 +7,12 @@ import il.technion.HashFunctions.FingerPrintAux;
 import il.technion.HashFunctions.HashMakerWithIndexBit;
 /**
  * TinySet - an access efficient Bloom filter construction. 
- * This code implements the TinySet algotrithm for space efficient fingerprint hashtable. 
- * TinySet is often more space efficent than Bloom filter and since it is based on a table it can be extended to support
+ * This code implements the TinySet algorithm for space efficient fingerprint hashtable. 
+ * TinySet is often more space efficient than Bloom filter and since it is based on a table it can be extended to support
  * functionalities that Bloom filters cannot such as values, and removals. 
  * (currently just Bloom filter functionality is implemented.) 
  * 
- * @author gil einziger, gilga1983@gmail.com
+ * @author Gil Einziger, gilga1983@gmail.com
  *
  */
 
@@ -45,8 +43,8 @@ public class TinySet extends BitwiseArray
 	/**
 	 *  Constructor for more advanced users, the number of resize operations can be influenced with a combination of minimal size
 	 *  and max additional bits. 
-	 * @param minimalFingerprintSize - minimal size of fingerprint (withotu index bit) 
-	 * @param bucketFingerprintCapacity -  maximal number of fingerprints per buckt (at your own risk not to overflow)
+	 * @param minimalFingerprintSize - minimal size of fingerprint (without index bit) 
+	 * @param bucketFingerprintCapacity -  maximal number of fingerprints per bucket (at your own risk not to overflow)
 	 * @param nrBuckets - number of buckets - 
 	 * @param maxAdditionalBits - maximal fingerprint size is minimalFingerprintSize + maxAdditional bits the number of buckrts, + 6 bits for chain 
 	 * + fingerprint should be less than 64 bits due implementation limitations. 
@@ -394,7 +392,7 @@ public class TinySet extends BitwiseArray
 		{
 			itemToShift = this.Replace(bucketStart,bucketId,idx,size,mod,itemToShift);
 			idx++;
-			// items may be shorten by a single bit while shifted to thr right - so we need to adjust their size. 
+			// items may be shorten by a single bit while shifted to the right - so we need to adjust their size. 
 			itemToShift = BitHelper.adjustFingerPrint(this.getSizeFix(idx, size, mod), itemToShift);
 
 		}
@@ -408,16 +406,5 @@ public class TinySet extends BitwiseArray
 
 		return this.nrItems;
 	}
-
-
-
-
-
-
-
-
-
-
-
 
 }
